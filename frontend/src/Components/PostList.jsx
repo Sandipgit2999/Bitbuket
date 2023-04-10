@@ -22,7 +22,7 @@ const PostList = () => {
 
 
   useEffect(() => {
-    getUsers()
+    getPosts()
   }, [])
 
   
