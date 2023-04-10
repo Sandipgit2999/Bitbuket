@@ -1,5 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import PostForm from "../Components/PostForm";
+import UserForm from "../Components/UserForm";
 
 
 const Allroutes = () => {
@@ -7,9 +9,8 @@ const Allroutes = () => {
         <div>
             <Routes>
                 <Route path="/posts" element={<PostForm />} />
-                {/* <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} /> */}
+                 <Route path="/" element={<UserForm />} />
+                
                 <Route />
             </Routes>
         </div>

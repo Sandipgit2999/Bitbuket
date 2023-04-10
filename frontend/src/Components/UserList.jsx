@@ -13,33 +13,17 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
+  
 } from "@chakra-ui/react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { url } from "./Url";
 
 
 
 const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
 
-  // const usersdata = [
-  //   {
-  //     id: 1,
-  //     name: "John Doe",
-  //     email: "john.doe@example.com",
-  //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Jane Smith",
-  //     email: "jane.smith@example.com",
-  //     bio: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Bob Johnson",
-  //     email: "bob.johnson@example.com",
-  //     bio: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
-  //   },
-  // ];
+  
 
   const [usersdata, setusersData] = useState([])
   console.log("userdata", usersdata)
@@ -62,7 +46,7 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
 
 
   const getUsers = () => {
-    axios.get("http://localhost:8080/analytics/users/")
+    axios.get(`${url}/analytics/users/`)
       .then((res) => {
         console.log(res.data);
         setusersData(res.data.data)
@@ -79,6 +63,12 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
   }, [])
 
   return (
+
+
+
+
+   
+
     <Table variant="simple">
       <Thead>
         <Tr>
@@ -95,7 +85,7 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
             <Td>{user.email}</Td>
             <Td>{user.bio || "-"}</Td>
 
-            {
+            {/* {
               userId == user.id && <Td>
                 <Button
                   onClick={() => {
@@ -115,17 +105,23 @@ const UserList = ({ users, onDeleteUser, onUpdateUser }) => {
                   Delete
                 </Button>
               </Td>
-            }
+            } */}
 
-            <Button
-              colorScheme="red"
+            <Link to='/posts'>
+              <Button
+                colorScheme="red"
               onClick={() => {
-                setDeleteUser(user);
-                setShowDeleteAlert(true);
+                console.log("Hiii")
+                // setDeleteUser(user);
+                // setShowDeleteAlert(true);
+                localStorage.setItem("userId", user._id)
               }}
-            >
-              Go to Profile
-            </Button>
+              >
+                Go to Profile
+              </Button>
+            </Link>
+
+
 
           </Tr>
         ))}

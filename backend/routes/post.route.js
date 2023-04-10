@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 const { Router } = require("express");
 
-const { PostModel } = require("../models/user.model");
+const { PostModel } = require("../models/post.model");
 
 const PostController = Router();
 
